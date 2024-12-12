@@ -1,0 +1,76 @@
+
+Tests avec Postman
+1. Créer une tâche
+
+    Méthode : POST
+    URL : http://localhost:5000/api/todos
+    Body (JSON) :
+
+{
+  "title": "Apprendre MERN",
+  "description": "Suivre le cours de MERN"
+}
+
+Réponse attendue :
+
+    {
+      "_id": "64fdb123e89a1f9876d12432c",
+      "title": "Apprendre MERN",
+      "description": "Suivre le cours de MERN",
+      "completed": false,
+      "userId": "64fda45e89a1f9876d12432b",
+      "createdAt": "2024-12-12T10:00:00.000Z",
+      "updatedAt": "2024-12-12T10:00:00.000Z"
+    }
+
+2. Récupérer les tâches
+
+    Méthode : GET
+    URL : http://localhost:5000/api/todos
+    Réponse attendue :
+
+    [
+      {
+        "_id": "64fdb123e89a1f9876d12432c",
+        "title": "Apprendre MERN",
+        "description": "Suivre le cours de MERN",
+        "completed": false,
+        "userId": "64fda45e89a1f9876d12432b",
+        "createdAt": "2024-12-12T10:00:00.000Z",
+        "updatedAt": "2024-12-12T10:00:00.000Z"
+      }
+    ]
+
+3. Mettre à jour une tâche
+
+    Méthode : PUT
+    URL : http://localhost:5000/api/todos/64fdb123e89a1f9876d12432c
+    Body (JSON) :
+
+{
+  "completed": true
+}
+
+// Réponse attendue :
+
+    {
+      "_id": "64fdb123e89a1f9876d12432c",
+      "title": "Apprendre MERN",
+      "description": "Suivre le cours de MERN",
+      "completed": true,
+      "userId": "64fda45e89a1f9876d12432b",
+      "createdAt": "2024-12-12T10:00:00.000Z",
+      "updatedAt": "2024-12-12T10:05:00.000Z"
+    }
+
+// 4. Supprimer une tâche
+
+    // Méthode : DELETE
+    // URL : http://localhost:5000/api/todos/64fdb123e89a1f9876d12432c
+    // Réponse attendue :
+
+    {
+      "message": "Tâche supprimée avec succès"
+    }
+
+// Cet exemple montre comment chaque utilisateur gère ses propres tâches, et le backend contrôle l'accès via la vérification de l'ID utilisateur.

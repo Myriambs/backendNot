@@ -1,0 +1,77 @@
+Test Postman
+1. Ajouter une tâche
+
+    Méthode : POST
+    URL : http://localhost:5000/api/todos/:userId
+    Exemple : http://localhost:5000/api/todos/64fda45e89a1f9876d12432b
+    Body (JSON) :
+
+{
+  "title": "Apprendre Node.js",
+  "description": "Travailler avec Express.js"
+}
+
+Réponse attendue :
+
+    {
+      "_id": "64fdb123e89a1f9876d12432c",
+      "title": "Apprendre Node.js",
+      "description": "Travailler avec Express.js",
+      "completed": false,
+      "userId": "64fda45e89a1f9876d12432b",
+      "createdAt": "2024-12-12T10:00:00.000Z",
+      "updatedAt": "2024-12-12T10:00:00.000Z"
+    }
+
+2. Lire les tâches d’un utilisateur
+
+    Méthode : GET
+    URL : http://localhost:5000/api/todos/:userId
+    Exemple : http://localhost:5000/api/todos/64fda45e89a1f9876d12432b
+    Réponse attendue :
+
+    [
+      {
+        "_id": "64fdb123e89a1f9876d12432c",
+        "title": "Apprendre Node.js",
+        "description": "Travailler avec Express.js",
+        "completed": false,
+        "userId": "64fda45e89a1f9876d12432b",
+        "createdAt": "2024-12-12T10:00:00.000Z",
+        "updatedAt": "2024-12-12T10:00:00.000Z"
+      }
+    ]
+
+3. Mettre à jour une tâche
+
+    Méthode : PUT
+    URL : http://localhost:5000/api/todos/:userId/:id
+    Exemple : http://localhost:5000/api/todos/64fda45e89a1f9876d12432b/64fdb123e89a1f9876d12432c
+    Body (JSON) :
+
+{
+  "completed": true
+}
+
+Réponse attendue :
+
+    {
+      "_id": "64fdb123e89a1f9876d12432c",
+      "title": "Apprendre Node.js",
+      "description": "Travailler avec Express.js",
+      "completed": true,
+      "userId": "64fda45e89a1f9876d12432b",
+      "createdAt": "2024-12-12T10:00:00.000Z",
+      "updatedAt": "2024-12-12T10:05:00.000Z"
+    }
+
+4. Supprimer une tâche
+
+    Méthode : DELETE
+    URL : http://localhost:5000/api/todos/:userId/:id
+    Exemple : http://localhost:5000/api/todos/64fda45e89a1f9876d12432b/64fdb123e89a1f9876d12432c
+    Réponse attendue :
+
+{
+  "message": "Tâche supprimée avec succès"
+}
